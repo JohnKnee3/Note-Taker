@@ -9,3 +9,5 @@ Submit form data to a server.
 Implement separation of concerns for routing.
 
 Deploy a server-side application to the Heroku platform.
+
+11.1.3 Set up the initial files. The big thing here was we set up a new style of file called animals.json in the data folder which holds an object that has an array named "animals" inside of it. Made an empty server.js in the root.
