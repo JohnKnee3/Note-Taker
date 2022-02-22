@@ -10,7 +10,14 @@ Implement separation of concerns for routing.
 
 Deploy a server-side application to the Heroku platform.
 
+As of 11.1.7
 https://stormy-river-62917.herokuapp.com/api/animals
+this will test querys
+
+http://localhost:3001/api/animals/1
+will work for both query and params
+
+this may be functioning as intended??
 
 11.1.3 Set up the initial files. The big thing here was we set up a new style of file called animals.json in the data folder which holds an object that has an array named "animals" inside of it. Made an empty server.js in the root.
 11.1.4 Used npm init -y and then npm i express to install express.js. Then in server.js we required it, then added --const app = express();-- and finally opened a port for 3001 using app.listen().
