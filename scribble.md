@@ -26,3 +26,4 @@ this may be functioning as intended??
 11.1.7 Created a get using params instead of query to search by id/ Params shows up before the "?" while query shows up after.
 11.2.3 Introduced to the idea of POST instead of GET. POST allows the client to add things to the database. Quick example of the syntax is --app.post("/api/animals", (req, res) => {console.log(req.body); res.json(req.body)})-
 11.2.4 Installed Insomnia which needed a step the module was unawate of. Then we used insomia to test our GET's to make sure things are working. Then we tried a POST to send in an animal ogbject. This passed but came back as undefined bbecause our server does not know how to convert the sent in object to the json format yet.
+11.2.5 Introduced --app.use(express.urlencoded({ extended: true }));-- and --app.use(express.json());-- set up the data to be used by req.body and then converts it into the json format.
