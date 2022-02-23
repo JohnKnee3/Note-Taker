@@ -25,3 +25,4 @@ this may be functioning as intended??
 11.1.6 We set up our Heroku and Heroku CLI. We use git add -A, git commit -m "Add Heroku" & git push heroku feature/MVP:main. You can use the address above to open the page or heroku open. Though I have never gotten both to work at the same time.
 11.1.7 Created a get using params instead of query to search by id/ Params shows up before the "?" while query shows up after.
 11.2.3 Introduced to the idea of POST instead of GET. POST allows the client to add things to the database. Quick example of the syntax is --app.post("/api/animals", (req, res) => {console.log(req.body); res.json(req.body)})-
+11.2.4 Installed Insomnia which needed a step the module was unawate of. Then we used insomia to test our GET's to make sure things are working. Then we tried a POST to send in an animal ogbject. This passed but came back as undefined bbecause our server does not know how to convert the sent in object to the json format yet.
