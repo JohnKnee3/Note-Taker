@@ -31,3 +31,4 @@ this may be functioning as intended??
 11.3.3 Downloaded the front end files and put them all in the newly created public folder. Then we just looked over the files to get an idea of where we are heading.
 11.3.4 Used app.get with sendFile(path.join) to go get the index.html in the public folder and display it to the browser. Then we used an express function --app.use(express.static("public"));-- to make sure all files in the "public" folder are referenced each time the page is deployed.
 11.3.5 Used Fetch to get the HTML to talk to our api/animals POST and performs it's function to put the newly created data from the frant end into the back end.
+11.3.6 Used 3 new app.get senfFile's to get the animals.html and zookeeper.html to display. The third we added was a catch all that returns you to the index.html if you select something that is not valid.
