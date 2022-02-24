@@ -33,3 +33,4 @@ this may be functioning as intended??
 11.3.5 Used Fetch to get the HTML to talk to our api/animals POST and performs it's function to put the newly created data from the frant end into the back end.
 11.3.6 Used 3 new app.get senfFile's to get the animals.html and zookeeper.html to display. The third we added was a catch all that returns you to the index.html if you select something that is not valid.
 11.3.7 Added a new fetch that went to our server.js which then went into animals.json and got the info we needed to diplay to the page. Then it used the printResults() already built for us to actually create the boxes to display it to the page. I may have to reread this one so I can understand it better.
+11.4.3 We moved all of the functions from our server.js to the animals.js in the lib folder. Then we added the requires for the fs and path up top and used module.export to kick them out at the bottom.
