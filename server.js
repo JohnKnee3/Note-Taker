@@ -6,7 +6,8 @@ const { notes } = require("./db/notes");
 const PORT = process.env.PORT || 3001;
 
 const app = express();
-
+//allows us to use the entire public folder
+app.use(express.static("public"));
 // parse incoming string or array data
 app.use(express.urlencoded({ extended: true }));
 // parse incoming JSON data
@@ -69,10 +70,20 @@ app.post("/api/notes", (req, res) => {
   }
 });
 
+//starts on the index.html
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "./public/index.html"));
+});
+
+//displays the notes.html
+app.get("/notes", (req, res) => {
+  res.sendFile(path.join(__dirname, "./public/notes.html"));
+});
+
 //Opens the server
 app.listen(PORT, () => {
   console.log(`API server now on port ${PORT}!`);
-  console.log("http://localhost:3001/api/notes");
+  console.log("http://localhost:3001");
 });
 
 //the get code for using parameters instead of query
