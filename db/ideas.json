@@ -1,12 +1,12 @@
 {
   "ideas": [
     {
-      "id": 0,
+      "id": "0",
       "title": "Test Title",
       "text": "Test text"
     },
     {
-      "id": 1,
+      "id": "1",
       "title": "Testier Title",
       "text": "Testier text"
     }
