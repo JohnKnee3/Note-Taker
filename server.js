@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 
-//finds based on the title
+//finds id using a query
 function filterByQuery(query, ideasArray) {
   let filteredResults = ideasArray;
   if (query.id) {
@@ -13,7 +13,7 @@ function filterByQuery(query, ideasArray) {
   }
   return filteredResults;
 }
-// //finds based on the id number
+// //finds id based on parameters
 // function findById(id, ideasArray) {
 //   const result = ideasArray.filter((idea) => idea.id === id)[0];
 //   return result;
