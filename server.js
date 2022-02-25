@@ -80,6 +80,11 @@ app.get("/notes", (req, res) => {
   res.sendFile(path.join(__dirname, "./public/notes.html"));
 });
 
+app.delete("/api/notes/:id", (req, res) => {
+  console.log(req.body);
+  res.send("DELETE Request Called");
+});
+
 //Opens the server
 app.listen(PORT, () => {
   console.log(`API server now on port ${PORT}!`);
