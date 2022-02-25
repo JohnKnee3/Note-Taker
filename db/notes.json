@@ -1,24 +1,14 @@
 {
   "notes": [
     {
-      "title": "Test Title",
-      "text": "Test text",
+      "title": "Grocery List",
+      "text": "ground beef, eggs, onion, milk, dried bread crumbs, salt, pepper, brown sugar, mustard and ketchup",
       "id": "0"
     },
     {
-      "title": "Testier Title",
-      "text": "Testier text",
+      "title": "Weekend Plans",
+      "text": "sleep, watch TV, have a good cry, divorce one of the wives and finally make that meatloaf",
       "id": "1"
-    },
-    {
-      "title": "Hey there",
-      "text": "I am just seeing what heepens",
-      "id": "2"
-    },
-    {
-      "title": "Are you serious",
-      "text": "Is this it.",
-      "id": "3"
     }
   ]
 }
