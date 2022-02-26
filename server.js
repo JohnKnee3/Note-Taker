@@ -44,6 +44,25 @@ function validateNote(note) {
   return true;
 }
 
+//delete note function
+function deleteNote(id, notesArray) {
+  console.log(id);
+  // const cloneArray = notesArray.slice();
+  // console.log(cloneArray);
+  // cloneArray.splice(id);
+  // cloneArray.join();
+
+  // fs.writeFileSync(
+  //   path.join(__dirname, "./db/notes.json"),
+  //   JSON.stringify({ result }, null, 2)
+  // );
+
+  // return cloneArray;
+
+  const result = notesArray.filter((note) => note.id === id)[0];
+  return result;
+}
+
 //the GET that goes into the notes object and sends it to our filterByQuery function
 app.get("/api/notes", (req, res) => {
   let results = notes;
@@ -81,9 +100,34 @@ app.get("/notes", (req, res) => {
 });
 
 app.delete("/api/notes/:id", (req, res) => {
-  console.log(req.body);
-  res.send("DELETE Request Called");
+  const note = deleteNote(req.params.id, notes);
+
+  res.json(note);
 });
+
+// app.delete("/collections/:collectionName/:id", function (req, res, next) {
+//   req.collection.remove(
+//     {
+//       _id: req.collection.id(req.params.id),
+//     },
+//     function (e, result) {
+//       if (e) return next(e);
+//       res.send(result === 1 ? { msg: "success" } : { msg: "error" });
+//     }
+//   );
+// });
+
+// app.del("/collections/:collectionName/:id", function (req, res, next) {
+//   req.collection.remove(
+//     {
+//       _id: req.collection.id(req.params.id),
+//     },
+//     function (e, result) {
+//       if (e) return next(e);
+//       res.send(result === 1 ? { msg: "success" } : { msg: "error" });
+//     }
+//   );
+// });
 
 //Opens the server
 app.listen(PORT, () => {
