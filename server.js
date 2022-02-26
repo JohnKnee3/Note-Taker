@@ -1,3 +1,4 @@
+const { v4: uuidv4 } = require("uuid");
 const fs = require("fs");
 const path = require("path");
 const express = require("express");
@@ -12,15 +13,6 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 // parse incoming JSON data
 app.use(express.json());
-
-//finds id using query
-function filterByQuery(query, notesArray) {
-  let filteredResults = notesArray;
-  if (query.id) {
-    filteredResults = filteredResults.filter((note) => note.id === query.id);
-  }
-  return filteredResults;
-}
 
 //Creates a new note to add to the notes object
 function createNewNote(body, notesArray) {
@@ -44,20 +36,34 @@ function validateNote(note) {
   return true;
 }
 
+//delete note function
+
+function deleteNote(id, notesArray) {
+  console.log(id);
+  const cloneArray = notesArray.filter((note) => note.id !== id);
+
+  fs.writeFileSync(
+    path.join(__dirname, "./db/notes.json"),
+    JSON.stringify({ notes: cloneArray }, null, 2)
+  );
+
+  // console.log(cloneArray);
+  // console.log(notes);
+
+  return cloneArray;
+}
+
 //the GET that goes into the notes object and sends it to our filterByQuery function
 app.get("/api/notes", (req, res) => {
   let results = notes;
-  console.log(req.query);
-  if (req.query) {
-    results = filterByQuery(req.query, results);
-  }
+
   res.json(results);
 });
 
 //the POST that talks to createNewNote to add the the notes object
 app.post("/api/notes", (req, res) => {
   // set id based on what the next index of the array will be
-  req.body.id = notes.length.toString();
+  req.body.id = uuidv4();
 
   // if any data in req.body is incorrect, send 400 error back
   if (!validateNote(req.body)) {
@@ -80,21 +86,14 @@ app.get("/notes", (req, res) => {
   res.sendFile(path.join(__dirname, "./public/notes.html"));
 });
 
+app.delete("/api/notes/:id", (req, res) => {
+  const note = deleteNote(req.params.id, notes);
+
+  res.json(note);
+});
+
 //Opens the server
 app.listen(PORT, () => {
   console.log(`API server now on port ${PORT}!`);
   console.log("http://localhost:3001");
 });
-
-//the get code for using parameters instead of query
-
-// //finds id based on parameters
-// function findById(id, notesArray) {
-//   const result = notesArray.filter((note) => note.id === id)[0];
-//   return result;
-// }
-
-// app.get("/api/notes/:id", (req, res) => {
-//   const result = findById(req.params.id, notes);
-//   res.json(result);
-// });
