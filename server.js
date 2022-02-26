@@ -14,15 +14,6 @@ app.use(express.urlencoded({ extended: true }));
 // parse incoming JSON data
 app.use(express.json());
 
-//finds id using query
-function filterByQuery(query, notesArray) {
-  let filteredResults = notesArray;
-  if (query.id) {
-    filteredResults = filteredResults.filter((note) => note.id === query.id);
-  }
-  return filteredResults;
-}
-
 //Creates a new note to add to the notes object
 function createNewNote(body, notesArray) {
   const note = body;
@@ -46,6 +37,7 @@ function validateNote(note) {
 }
 
 //delete note function
+
 function deleteNote(id, notesArray) {
   console.log(id);
   const cloneArray = notesArray.filter((note) => note.id !== id);
@@ -55,16 +47,16 @@ function deleteNote(id, notesArray) {
     JSON.stringify({ notes: cloneArray }, null, 2)
   );
 
+  // console.log(cloneArray);
+  // console.log(notes);
+
   return cloneArray;
 }
 
 //the GET that goes into the notes object and sends it to our filterByQuery function
 app.get("/api/notes", (req, res) => {
   let results = notes;
-  console.log(req.query);
-  if (req.query) {
-    results = filterByQuery(req.query, results);
-  }
+
   res.json(results);
 });
 
@@ -105,43 +97,3 @@ app.listen(PORT, () => {
   console.log(`API server now on port ${PORT}!`);
   console.log("http://localhost:3001");
 });
-
-//the get code for using parameters instead of query
-
-// //finds id based on parameters
-// function findById(id, notesArray) {
-//   const result = notesArray.filter((note) => note.id === id)[0];
-//   return result;
-// }
-
-// app.get("/api/notes/:id", (req, res) => {
-//   const result = findById(req.params.id, notes);
-//   res.json(result);
-// });
-
-// app.delete("/collections/:collectionName/:id", function (req, res, next) {
-//   req.collection.remove(
-//     {
-//       _id: req.collection.id(req.params.id),
-//     },
-//     function (e, result) {
-//       if (e) return next(e);
-//       res.send(result === 1 ? { msg: "success" } : { msg: "error" });
-//     }
-//   );
-// });
-
-// app.del("/collections/:collectionName/:id", function (req, res, next) {
-//   req.collection.remove(
-//     {
-//       _id: req.collection.id(req.params.id),
-//     },
-//     function (e, result) {
-//       if (e) return next(e);
-//       res.send(result === 1 ? { msg: "success" } : { msg: "error" });
-//     }
-//   );
-// });
-
-// const result = notesArray.filter((note) => note.id !=== id)[0];
-// return result;
