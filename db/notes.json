@@ -1,19 +1,7 @@
-{
-  "notes": [
-    {
-      "title": "Having a ball",
-      "text": "trying to delete this stuff\n",
-      "id": "f4d4753d-3c59-44e1-8d7b-352e3f6e1e1d"
-    },
-    {
-      "title": "more tests",
-      "text": "Let's see",
-      "id": "d93a7bf8-ae73-450f-938a-8ada976df0b4"
-    },
-    {
-      "title": "Another test",
-      "text": "yup",
-      "id": "2ba7c89b-ed7b-4806-84f3-01a95384bac1"
-    }
-  ]
-}
+[
+  {
+    "title": "more tests",
+    "text": "Let's see",
+    "id": "d93a7bf8-ae73-450f-938a-8ada976df0b4"
+  }
+]

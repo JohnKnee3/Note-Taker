@@ -39,7 +39,7 @@ function validateNote(note) {
 //delete note function
 
 function deleteNote(id, notesArray) {
-  console.log(id);
+  console.log(notesArray);
   const cloneArray = notesArray.filter((note) => note.id !== id);
 
   fs.writeFileSync(
@@ -86,10 +86,38 @@ app.get("/notes", (req, res) => {
   res.sendFile(path.join(__dirname, "./public/notes.html"));
 });
 
-app.delete("/api/notes/:id", (req, res) => {
-  const note = deleteNote(req.params.id, notes);
+// app.delete("/api/notes/:id", (req, res) => {
+//   const note = deleteNote(req.params.id, notes);
 
-  res.json(note);
+//   res.json(note);
+// });
+
+// DELETE a note
+app.delete("/api/notes/:id", (req, res) => {
+  // Log that a POST request was received
+  const id = req.params.id;
+
+  fs.readFile("./db/notes.json", "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+    } else {
+      const parsedNotes = JSON.parse(data);
+      console.log(parsedNotes);
+      // const cloneArray = parsedNotes.notes.filter((note) => note.id !== id);
+      // console.log(cloneArray);
+
+      // fs.writeFile(
+      //   "./db/notes.json",
+      //   JSON.stringify(cloneArray, null, 2),
+      //   (writeErr) =>
+      //     writeErr
+      //       ? console.error(writeErr)
+      //       : console.info("Succsessfully updated reviews!")
+      // );
+    }
+  });
+
+  res.json(id);
 });
 
 //Opens the server
