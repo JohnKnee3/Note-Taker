@@ -1,34 +1,14 @@
 {
   "notes": [
     {
-      "title": "Grocery List",
-      "text": "Ground Beef,  Eggs,  Onions,  Milk,  Dried Bread Crumbs,  Salt,  Pepper,  Brown Sugar,  Mustard  and  Ketchup",
-      "id": "0"
-    },
-    {
       "title": "Weekend Plans",
       "text": "Sleep,  Watch TV,  Have a good cry,  Divorce one of the wives  and  Finally make that meatloaf",
       "id": "1"
     },
     {
-      "title": "Test",
-      "text": "Test text with Insomnia",
-      "id": "2"
-    },
-    {
-      "title": "Test",
-      "text": "Test text with Insomnia",
-      "id": "3"
-    },
-    {
-      "title": "Test",
-      "text": "Test text with Insomnia",
-      "id": "4"
-    },
-    {
-      "title": "Test",
-      "text": "Test text with Insomnia",
-      "id": "5"
+      "title": "Hey there ",
+      "text": "have a nice day",
+      "id": "c3478b2d-0f8f-4013-9b77-d9c430f355b2"
     }
   ]
 }
