@@ -3,7 +3,6 @@ let noteText;
 let saveNoteBtn;
 let newNoteBtn;
 let noteList;
-// let deleteNoteBtn;
 
 if (window.location.pathname === "/notes") {
   noteTitle = document.querySelector(".note-title");
@@ -11,7 +10,6 @@ if (window.location.pathname === "/notes") {
   saveNoteBtn = document.querySelector(".save-note");
   newNoteBtn = document.querySelector(".new-note");
   noteList = document.querySelectorAll(".list-container .list-group");
-  // deleteNoteBtn = document.querySelector(".delete-note");
 }
 
 // Show an element
@@ -160,7 +158,7 @@ const renderNoteList = async (notes) => {
     noteListItems.push(createLi("No saved Notes", false));
   }
 
-  jsonNotes.forEach((note) => {
+  jsonNotes.notes.forEach((note) => {
     const li = createLi(note.title);
     li.dataset.note = JSON.stringify(note);
 
@@ -178,7 +176,6 @@ const getAndRenderNotes = () => getNotes().then(renderNoteList);
 if (window.location.pathname === "/notes") {
   saveNoteBtn.addEventListener("click", handleNoteSave);
   newNoteBtn.addEventListener("click", handleNewNoteView);
-  // deleteNoteBtn.addEventListener("click", handleNoteDelete);
   noteTitle.addEventListener("keyup", handleRenderSaveBtn);
   noteText.addEventListener("keyup", handleRenderSaveBtn);
 }

@@ -2,7 +2,7 @@ const { v4: uuidv4 } = require("uuid");
 const fs = require("fs");
 const path = require("path");
 const express = require("express");
-const { notes } = require("./db/notes");
+// const { notes } = require("./db/notes");
 
 const PORT = process.env.PORT || 3001;
 
@@ -39,7 +39,6 @@ function validateNote(note) {
 //delete note function
 
 function deleteNote(id, notesArray) {
-  console.log(notesArray);
   const cloneArray = notesArray.filter((note) => note.id !== id);
 
   fs.writeFileSync(
@@ -47,15 +46,12 @@ function deleteNote(id, notesArray) {
     JSON.stringify({ notes: cloneArray }, null, 2)
   );
 
-  // console.log(cloneArray);
-  // console.log(notes);
-
   return cloneArray;
 }
 
 //the GET that goes into the notes object and sends it to our filterByQuery function
 app.get("/api/notes", (req, res) => {
-  let results = notes;
+  let results = JSON.parse(fs.readFileSync("./db/notes.json", "utf8"));
 
   res.json(results);
 });
@@ -69,15 +65,17 @@ app.post("/api/notes", (req, res) => {
   if (!validateNote(req.body)) {
     res.status(400).send("The note is not properly formatted.");
   } else {
+    let results = JSON.parse(fs.readFileSync("./db/notes.json", "utf8"));
     // add note to json file and notes array in this function
-    const note = createNewNote(req.body, notes);
+    const note = createNewNote(req.body, results.notes);
 
     res.json(note);
   }
 });
 
 app.delete("/api/notes/:id", (req, res) => {
-  const note = deleteNote(req.params.id, notes);
+  let results = JSON.parse(fs.readFileSync("./db/notes.json", "utf8"));
+  const note = deleteNote(req.params.id, results.notes);
 
   res.json(note);
 });
@@ -91,36 +89,6 @@ app.get("/", (req, res) => {
 app.get("/notes", (req, res) => {
   res.sendFile(path.join(__dirname, "./public/notes.html"));
 });
-
-// // DELETE a note written a different way but still has the same issue.
-// app.delete("/api/notes/:id", (req, res) => {
-//   // Log that a POST request was received
-//   const id = req.params.id;
-//   let newNotesArray = {};
-
-//   fs.readFile("./db/notes.json", "utf8", (err, data) => {
-//     if (err) {
-//       console.error(err);
-//     } else {
-//       const parsedNotes = JSON.parse(data);
-//       // console.log(parsedNotes);
-//       const cloneArray = parsedNotes.notes.filter((note) => note.id !== id);
-//       // console.log(cloneArray);
-//       newNotesArray = { notes: cloneArray };
-//       console.log(newNotesArray);
-
-//       fs.writeFile(
-//         "./db/notes.json",
-//         JSON.stringify({ notes: cloneArray }, null, 2),
-//         (writeErr) =>
-//           writeErr
-//             ? console.error(writeErr)
-//             : console.info("Succsessfully updated reviews!")
-//       );
-//       res.json(newNotesArray);
-//     }
-//   });
-// });
 
 //Opens the server
 app.listen(PORT, () => {

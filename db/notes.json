@@ -1,24 +1,19 @@
 {
   "notes": [
     {
-      "title": "Having a ball",
-      "text": "trying to delete this stuff\n",
-      "id": "f4d4753d-3c59-44e1-8d7b-352e3f6e1e1d"
+      "title": "Just seeing what happens",
+      "text": "This should add to the list on the left",
+      "id": "c9005dc1-15b0-436b-8a78-d66c89ed8c3f"
     },
     {
-      "title": "more tests",
-      "text": "Let's see",
-      "id": "d93a7bf8-ae73-450f-938a-8ada976df0b4"
+      "title": "yup",
+      "text": "I am still testing",
+      "id": "25516eae-d1ce-4f06-9a3b-137e03661cc5"
     },
     {
-      "title": "Another test",
-      "text": "yup",
-      "id": "2ba7c89b-ed7b-4806-84f3-01a95384bac1"
-    },
-    {
-      "title": "Another test",
-      "text": "yup",
-      "id": "605367e4-416f-45bf-b2c3-2983d1593ce8"
+      "title": "One final look",
+      "text": "I removed the global notes that is no longer being used so this should be fine.",
+      "id": "474c5bfa-0bbc-4131-8c11-f69dcd106088"
     }
   ]
 }
