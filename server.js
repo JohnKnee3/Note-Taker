@@ -76,6 +76,12 @@ app.post("/api/notes", (req, res) => {
   }
 });
 
+app.delete("/api/notes/:id", (req, res) => {
+  const note = deleteNote(req.params.id, notes);
+
+  res.json(note);
+});
+
 //starts on the index.html
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "./public/index.html"));
@@ -84,12 +90,6 @@ app.get("/", (req, res) => {
 //displays the notes.html
 app.get("/notes", (req, res) => {
   res.sendFile(path.join(__dirname, "./public/notes.html"));
-});
-
-app.delete("/api/notes/:id", (req, res) => {
-  const note = deleteNote(req.params.id, notes);
-
-  res.json(note);
 });
 
 // // DELETE a note written a different way but still has the same issue.
